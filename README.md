@@ -1,8 +1,7 @@
-#Assignment 1 Writeup
-*Ian Snyder, 4298616, ias20*
-Due: Friday October 1st @ 11:59pm on Gradescope
+# Algorithims Assignment 1
 
-##Assignment Discussion
+
+## Assignment Discussion
 When going about solving this assignment, I found it absolutely crucial to go about solving it in tranches. What I mean by this is that I started by just getting my Crossword program to properly read in the two files from the cmd prompt and simply printed out the board and dimensions of it. Next I created a constructor and a main, and ensured all the data structures I thought I would need worked the way I expected them to. The 3 primary data structures I knew I needed to set up were:
   * A dictionary containing the possible words and ability to validate if a string was a prefix, a word, both, or neither. Fortunately this was mostly given to us.
   * A 2d Char matrix representing the crossword template which would be pivotal for referencing in solution finding.
@@ -13,5 +12,5 @@ Two parts about the assignment I was unable to do / am still confused about are 
   * I was unable to generate a proper score function. I originally wrote a separate program that read in the score file as a hashmap, and had a method that read in a char array and added up the score for each char. I still think I could have made it work, but I couldn't make it work with the crossword puzzles containing things besides just letters.
   * The second thing I was unsure about was if the crossword puzzle was allowed to contain duplicates as I genuinely never do them personally. If it was specified unfortunately I missed it and assumed duplicates were allowed. If I knew they weren't, I would keep an arraylist of words already used once they were appended and would include this as a check in my isValid function.
 
-##Assignment Analysis
+## Assignment Analysis
 While writing the program, it was very clear this program would **not** be efficient. However I am really struggling to come up with an accurate run time analysis for my program. My best guess is that the worst possible run time would be the one that requires the most backtracking. A situation where the board consistently gets several letters deep into a solution and reaches a situation where it has to backtrack over and over again incrementing the first letter in the solution to resolve a conflicting block. I assume if a board was nxn spaces, considering there is 26 possible letters per cell, and each compounding letter has to be referenced to a dictionary containing 17,271 words. It is no wonder it took my computer about 3 and a half hours to run tests on 6x6 boards. One thing that would make my program take significantly longer is pre defined letters towards the end of columns that are uncommon letters; such as x, q, z. This would require the most amount of backtracking to try and find a solution. This is because my program starts at the top left and works right then down, meaning the most backtracking would occur on the right and bottom parts of the board. Again, Im having a hard time deterring what the worst possible run time is, based on what I have stated I believe it is at least exponential, but not factorial.
